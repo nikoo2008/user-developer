@@ -3,19 +3,13 @@ import axios from "axios";
 
 import ProfileCard from "./ProfileCard";
 
+/* eslint-disable react-hooks/exhaustive-deps */
+
 function Home({ profiles, setProfiles }) {
 
   const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState("");
-
-  useEffect(() => {
-
-    if (profiles.length === 0) {
-      fetchProfiles();
-    }
-
-  }, []);
 
   const fetchProfiles = async () => {
 
@@ -52,6 +46,12 @@ function Home({ profiles, setProfiles }) {
     }
 
   };
+
+  useEffect(() => {
+
+    fetchProfiles();
+
+  }, []);
 
   const deleteProfile = (id) => {
 
